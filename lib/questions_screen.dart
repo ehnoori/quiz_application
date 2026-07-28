@@ -27,6 +27,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
       setState(() {
         currentQuestionIndex++;
       });
+
     }
   }
 
@@ -46,7 +47,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               currentQuestion.text,
               textAlign: TextAlign.center,
               style: GoogleFonts.lato(
-                color: const Color.fromARGB(255, 153, 127, 228),
+                color: const Color.fromARGB(255, 216, 211, 232),
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),

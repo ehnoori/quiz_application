@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:untitled/Data/questions.dart';
 import 'package:untitled/questions_summary.dart';
@@ -32,9 +29,6 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
-
     final summaryList = summary;
 
     final numTotalQuestions = questions.length;
@@ -44,58 +38,52 @@ class ResultsScreen extends StatelessWidget {
     }).length;
 
     return Scaffold(
-      backgroundColor:
-       Colors.deepPurpleAccent,
-      body:SizedBox(
-        width: double.infinity,
-        child: Container(
+      backgroundColor: Colors.deepPurpleAccent,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(30),
+          child: Column(
+            children: [
 
-        padding: const EdgeInsets.all(40),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 30.0),
-                  child: Text(
-                    'You answered $numCorrectQuestions out of '
-                        '$numTotalQuestions questions correctly!',
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                    ),
-                  ),
+              Text(
+                'You answered $numCorrectQuestions out of '
+                    '$numTotalQuestions questions correctly!',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
                 ),
+              ),
 
-                const SizedBox(height: 30),
+              const SizedBox(height: 25),
 
-                Expanded(
+              Expanded(
+                child: SingleChildScrollView(
                   child: QuestionsSummary(summaryList),
                 ),
+              ),
 
-                const SizedBox(height: 30),
 
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 18.0),
-                  child: TextButton.icon(
-                    onPressed: onRestart,
-                    icon: const Icon(Icons.refresh),
-                    label: const Text('Restart Quiz',
-                      style: TextStyle(fontSize: 20,
-                          color: Color.fromARGB(255, 218, 226, 241)),
-
-                    ),
+           SizedBox(height: 5,),
+              TextButton.icon(
+                onPressed: onRestart,
+                icon: const Icon(
+                  Icons.refresh,
+                  color: Colors.white,
+                ),
+                label: const   Text(
+                  'Restart Quiz!',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
                   ),
                 ),
-
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
     );
-
   }
 }
